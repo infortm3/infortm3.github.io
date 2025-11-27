@@ -99,7 +99,6 @@ html, body {
     z-index: 5;
     animation: glow-pulse 3s infinite alternate;
 }
-*/
 .enter-btn {
     margin-top: 20px;
     padding: 12px 30px;
@@ -156,7 +155,6 @@ html, body {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     font-family: 'Anton', sans-serif;
     letter-spacing: 2px;
-    /* replace animation with simple transition to avoid built-in delay */
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -180,7 +178,6 @@ html, body {
     transition: opacity 0.6s ease, transform 0.6s ease;
     transition-delay: 0.8s;
 }
-
 .boxes-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -402,4 +399,5 @@ html, body {
     animation: none !important;
 
 }
+
 
