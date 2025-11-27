@@ -1,0 +1,484 @@
+/* styles.css (overview)
+   - Reset & base styles
+   - Layout for intro, white-section (grid), and detail overlays
+   - Buttons, animations (pop, fade), and state-driven classes (.scrolled-down, .animal-detail-active)
+*/
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    overflow: hidden;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+/* Footer
+   - Fixed footer positioned at the bottom with slight opacity
+*/
+.site-footer {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.6);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.white-section .site-footer,
+.team-detail-section .site-footer {
+    color: rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Intro Section
+   - Full viewport hero with background image, profile card, and ENTER button
+   - Uses transforms for sliding out with .scrolled-down
+*/
+.intro-section {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/sekolah.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.8s ease;
+}
+
+/* Container and profile card styles (pop animation, glow) */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #fdbb2d, #b21f1f);
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(253, 187, 45, 0.7);
+    animation: pop-out 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+    border: 5px solid white;
+    margin-bottom: 20px;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.intro-text {
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    animation: text-pop 2s 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    position: relative;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 3px;
+}
+
+.intro-text::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #fdbb2d, #b21f1f);
+    animation: underline 1s 2.5s ease-out forwards;
+}
+
+.glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(253, 187, 45, 0.4) 0%, rgba(253, 187, 45, 0) 70%);
+    filter: blur(10px);
+    z-index: 5;
+    animation: glow-pulse 3s infinite alternate;
+}
+
+/* Enter and Leave button designs
+   - Leave button is visually same style as Enter but used to return to intro
+*/
+.enter-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #fdbb2d, #b21f1f);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    animation: fade-in 1s 3s forwards;
+    box-shadow: 0 4px 15px rgba(253, 187, 45, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 10;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.enter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(253, 187, 45, 0.6);
+}
+.leave-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #fdbb2d, #b21f1f);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    box-shadow: 0 4px 15px rgba(253, 187, 45, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.4s;
+    z-index: 10;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.leave-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(253, 187, 45, 0.6);
+}
+
+/* Team Selection */
+.section-title {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.section-title h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #333;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 2px;
+    /* replace animation with simple transition to avoid built-in delay */
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* White section: grid container for team boxes
+   - Styled as a full-screen white card/overlay with a subtle background
+   - Transform/opacity transitions are driven by .scrolled-down class
+*/
+.white-section {
+    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* initial state of the white section: fade/slide in after intro moves */
+.white-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    /* this delay controls when the white section appears after intro slides out */
+    transition-delay: 0.8s;
+}
+
+.boxes-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr) auto; /* reserve a final row for the button */
+    gap: 20px;
+    width: 90%;
+    max-width: 800px;
+    height: 80%;
+    margin-top: 60px;
+}
+
+/* ensure the leave button spans all columns and is centered */
+.boxes-container .leave-btn {
+    grid-column: 1 / -1;
+    justify-self: center;
+    align-self: start;
+    margin-top: 10px;
+}
+
+.box {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.box:hover img {
+    transform: scale(1.05);
+}
+
+/* Animal Detail Sections
+   - Styled overlays that appear above the main content when active.
+   - When active they translate into view from translateY(100vh) to 0 via .active + .team-detail-active.
+*/
+.team-detail-section {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(100vh);
+    transition: transform 0.8s ease;
+    z-index: 100;
+}
+
+.j-bg {
+    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                url('img/j3.png');
+}
+
+.k-bg {
+    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                url('img/k3.png');
+}
+
+.v-bg {
+    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                url('https://images.unsplash.com/photo-1444464666168-49d633b86797?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+}
+
+.e-bg {
+    background: linear-gradient(rgba(131, 131, 131, 0.7), rgba(131, 131, 131, 0.7)), 
+                url('img/s.png');
+}
+
+.detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.detail-container img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.detail-container h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-family: 'Anton', sans-serif;
+    color: #333;
+    letter-spacing: 2px;
+}
+
+.detail-container p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #666;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+.back-to-boxes-btn {
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #1a2a6c, #b21f1f);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(26, 42, 108, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.back-to-boxes-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(26, 42, 108, 0.6);
+}
+
+/* Snow CSS and keyframes */
+.snow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 105;
+}
+
+.snowflake {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(-10px) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(20px);
+        opacity: 0;
+    }
+}
+
+/* Animations */
+@keyframes pop-out {
+    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+    50% { transform: scale(1.5) rotate(0); opacity: 1; }
+    70% { transform: scale(1.3) rotate(5deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+@keyframes text-pop {
+    0% { transform: translateY(50px) scale(0.8); opacity: 0; }
+    60% { transform: translateY(0) scale(1.2); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes underline {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes glow-pulse {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    100% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll transition */
+.scrolled-down .intro-section {
+    transform: translateY(-100vh);
+}
+
+.scrolled-down .white-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0s; /* ensure no delay on reveal */
+}
+
+.scrolled-down .section-title h2,
+.scrolled-down .boxes-container .leave-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animal detail active state */
+.team-detail-active .white-section {
+    transform: translateY(-100vh);
+}
+
+.team-detail-active .team-detail-section.active {
+    transform: translateY(0);
+}
+
+/* Allow normal scrolling AFTER entering second section */
+.scrolled-down {
+    overflow: auto;
+}
+
+/* Disable scrolling when animal detail is active */
+.team-detail-active {
+    overflow: hidden;
+}
+
+/* Disable transitions/animations temporarily when body has this class */
+.no-transition .intro-section,
+.no-transition .white-section,
+.no-transition .team-detail-section,
+.no-transition .profile-pic,
+.no-transition .intro-text,
+.no-transition .enter-btn,
+.no-transition .leave-btn,
+.no-transition .boxes-container,
+.no-transition .detail-container {
+    transition: none !important;
+    animation: none !important;
+}
