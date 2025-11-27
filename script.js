@@ -1,19 +1,8 @@
-// Script overview:
-// - Handles initial reset to intro state, snow effect generation/cleanup,
-// - Enter / Leave button behaviors and scroll prevention,
-// - Loading of detail pages per team member, and back navigation.
-
-// Reset page to intro on load
-// When the page first loads, ensure the UI is in the intro state.
 document.addEventListener('DOMContentLoaded', function() {
     resetToIntro();
 });
 
 function resetToIntro() {
-    // Reset page state to initial intro screen:
-    // - Clear classes that trigger transitions
-    // - Reposition scroll and restore intro view
-    // - Hide detail panels, clear snow and re-enable default scrolling
     document.body.classList.remove('scrolled-down', 'team-detail-active');
     window.scrollTo(0, 0);
     const teamDetails = document.querySelectorAll('.team-detail-section');
@@ -27,10 +16,6 @@ function resetToIntro() {
     document.body.style.overflow = 'hidden';
     window.removeEventListener('scroll', preventScrollBack);
 }
-
-// Snow functions
-// - createSnow(): dynamically produces snowflake elements with random settings.
-// - clearSnow(): removes snowflakes from the DOM.
 function createSnow() {
     const snowContainer = document.querySelector('.snow-container');
     if (!snowContainer) return;
@@ -54,49 +39,34 @@ function createSnow() {
         snowContainer.appendChild(snowflake);
     }
 }
-
 function clearSnow() {
     const snowContainer = document.querySelector('.snow-container');
     if (snowContainer) {
         snowContainer.innerHTML = '';
     }
 }
-
-// Enter button functionality
-// - Adds scroll class and smoothly scrolls to reveal the team section.
 const enterBtn = document.getElementById('enterBtn');
 enterBtn.addEventListener('click', function() {
     document.body.classList.add('scrolled-down');
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     window.addEventListener('scroll', preventScrollBack);
 });
-
-// Leave button functionality
-// - Resets page to intro instantly with a temporary no-transition class.
 const backIntroButtons = document.querySelectorAll('.leave-btn');
-
 backIntroButtons.forEach(btn => {
     btn.addEventListener('click', function() {
         document.body.classList.add('no-transition');
-        void document.body.offsetWidth; // force reflow to apply class
+        void document.body.offsetWidth;
         resetToIntro();
         setTimeout(() => {
             document.body.classList.remove('no-transition');
         }, 50);
     });
 });
-
-// Function to prevent scrolling back up
-// - Keeps user pinned to the white section after Enter.
 function preventScrollBack() {
     if (window.scrollY < document.body.scrollHeight - window.innerHeight) {
         window.scrollTo(0, document.body.scrollHeight);
     }
 }
-
-// Box click functionality
-// - Clicking a team box shows the respective detail overlay.
-// - If the 'e' profile is shown, start the snow effect.
 const boxes = document.querySelectorAll('.box');
 boxes.forEach(box => {
     box.addEventListener('click', function() {
@@ -112,9 +82,6 @@ boxes.forEach(box => {
         document.body.style.overflow = 'hidden';
     });
 });
-
-// Back to boxes button functionality
-// - Hides detail overlays, clears snow and returns to the white-section.
 const backButtons = document.querySelectorAll('.back-to-boxes-btn');
 backButtons.forEach(button => {
     button.addEventListener('click', function() {
@@ -129,4 +96,5 @@ backButtons.forEach(button => {
         document.body.style.overflow = 'auto';
         window.scrollTo(0, document.body.scrollHeight);
     });
+
 });
