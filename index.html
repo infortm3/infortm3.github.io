@@ -8,12 +8,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Footer: Fixed footer used across intro, white-section and detail pages -->
     <footer class="site-footer">
         <p>© Snow-Team 2020</p>
     </footer>
-
-    <!-- Intro Section: Landing view with profile, title and ENTER button -->
     <section id="intro" class="intro-section">
         <div class="container">
             <div class="glow"></div>
@@ -21,29 +18,21 @@
                 <img src="img/kemurnian.png" alt="Profile">
             </div>
             <h1 class="intro-text">Group 3</h1>
-            <!-- Enter button toggles .scrolled-down and reveals the team grid -->
             <button class="enter-btn" id="enterBtn">ENTER</button>
         </div>
     </section>
-
-    <!-- Team Section: A grid presenting each team member. -->
     <section id="white-section" class="white-section">
         <div class="section-title">
             <h2>Meet the team!</h2>
         </div>
         <div class="boxes-container">
-            <!-- Boxes: clickable cards; data-team maps to the detail section -->
             <div class="box" data-team="j"><img src="img/j.png" alt="J"></div>
             <div class="box" data-team="k"><img src="img/k.png" alt="K"></div>
             <div class="box" data-team="v"><img src="img/v.png" alt="V"></div>
             <div class="box" data-team="e"><img src="img/e.png" alt="E"></div>
-
-            <!-- Leave button: returns instantly to the intro section -->
             <button class="leave-btn">LEAVE</button>
         </div>
     </section>
-
-    <!-- Team Detail Sections: Overlays with profile details and BACK button -->
     <section id="j-detail" class="team-detail-section j-bg">
         <div class="detail-container">
             <img src="img/j2.png" alt="J">
@@ -77,7 +66,7 @@
             <button class="back-to-boxes-btn">BACK</button>
         </div>
     </section>
-
     <script src="script.js"></script>
 </body>
 </html>
+
