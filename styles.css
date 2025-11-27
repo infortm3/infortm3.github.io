@@ -246,7 +246,7 @@ html, body {
 }
 .v-bg {
     background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
-                url('https://images.unsplash.com/photo-1444464666168-49d633b86797?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+                url('img/v.png');
 }
 .e-bg {
     background: linear-gradient(rgba(131, 131, 131, 0.7), rgba(131, 131, 131, 0.7)), 
@@ -402,3 +402,4 @@ html, body {
     animation: none !important;
 
 }
+
