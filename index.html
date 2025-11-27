@@ -8,32 +8,42 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <footer class="site-footer">
+    <!-- Footer -->
+    <footer class="site-footer"> <!-- Class is used to edit how it looks in CSS -->
         <p>© Snow-Team 2020</p>
-    </footer>
-    <section id="intro" class="intro-section">
-        <div class="container">
-            <div class="glow"></div>
+    </footer> <!-- Footer location doesnt metter since it will be edited / relocate in CSS -->
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section"> <!-- Id is a global value that will be req across the code -->
+        <div class="container"> <!-- Center Intro -->
+            <div class="glow"></div> <!-- Div is a division used to group certain lines of code together -->
             <div class="profile-pic">
-                <img src="img/kemurnian.png" alt="Profile">
+                <img src="img/kemurnian.png" alt="Profile"> <!-- Alt is a back up if the pic doesnt shows up (it will display "profile") -->
             </div>
             <h1 class="intro-text">Group 3</h1>
             <button class="enter-btn" id="enterBtn">ENTER</button>
         </div>
     </section>
+
+    <!-- Team Section -->
     <section id="white-section" class="white-section">
         <div class="section-title">
-            <h2>Meet the team!</h2>
+            <h2>Meet the team!</h2> <!-- h2 is a heading smaller than h1 -->
         </div>
         <div class="boxes-container">
-            <div class="box" data-team="j"><img src="img/j.png" alt="J"></div>
+            <!-- Boxes -->
+            <div class="box" data-team="j"><img src="img/j.png" alt="J"></div> <!-- Its a box? what you want? -->
             <div class="box" data-team="k"><img src="img/k.png" alt="K"></div>
             <div class="box" data-team="v"><img src="img/v.png" alt="V"></div>
             <div class="box" data-team="e"><img src="img/e.png" alt="E"></div>
+
+            <!-- Leave button -->
             <button class="leave-btn">LEAVE</button>
         </div>
     </section>
-    <section id="j-detail" class="team-detail-section j-bg">
+
+    <!-- Team Detail Section -->
+    <section id="j-detail" class="team-detail-section j-bg"> <!-- Section is like a div but only used to bound similiar/related content -->
         <div class="detail-container">
             <img src="img/j2.png" alt="J">
             <h2>jennifer Jolie</h2>
@@ -66,9 +76,7 @@
             <button class="back-to-boxes-btn">BACK</button>
         </div>
     </section>
-    <script src="script.js"></script>
+
+    <script src="script.js"></script> <!-- Can be put on the top but its unideal since it can couse error -->
 </body>
 </html>
-
-
-
