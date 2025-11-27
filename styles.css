@@ -7,15 +7,17 @@ html, body {
     overflow: hidden;
     font-family: 'Bebas Neue', sans-serif;
 }
+
+/* Footer */
 .site-footer {
-    position: fixed;
-    bottom: 15px;
+    position: fixed; /* no metter the size of the screen it will be on that specific area */
+    bottom: 15px; /* px is a unit of messurement aka pixel */
     left: 0;
-    width: 100%;
+    width: 100%; 
     text-align: center;
-    z-index: 1000;
+    z-index: 1000; /* position value */
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* rem is a unit of messurement aka root em */
     letter-spacing: 1px;
     color: rgba(255, 255, 255, 0.6);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -25,6 +27,8 @@ html, body {
     color: rgba(0, 0, 0, 0.4);
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
 }
+
+/* Intro Section */
 .intro-section {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/sekolah.png');
     background-size: cover;
@@ -37,7 +41,9 @@ html, body {
     position: relative;
     transition: transform 0.8s ease;
 }
-.container {
+
+/* Container and profile card (pop animation, glow) */
+.container { /* Center Intro */
     position: relative;
     width: 100%;
     height: 100%;
@@ -99,6 +105,8 @@ html, body {
     z-index: 5;
     animation: glow-pulse 3s infinite alternate;
 }
+
+/* Enter and Leave button */
 .enter-btn {
     margin-top: 20px;
     padding: 12px 30px;
@@ -116,7 +124,6 @@ html, body {
     z-index: 10;
     font-family: 'Bebas Neue', sans-serif;
 }
-
 .enter-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(253, 187, 45, 0.6);
@@ -141,6 +148,8 @@ html, body {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(253, 187, 45, 0.6);
 }
+
+/* Team Selection */
 .section-title {
     position: absolute;
     top: 50px;
@@ -157,9 +166,11 @@ html, body {
     font-family: 'Anton', sans-serif;
     letter-spacing: 2px;
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(6px); /* move vertical aka y*/
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
+/* White section: grid container for team boxes */
 .white-section {
     background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
@@ -173,22 +184,27 @@ html, body {
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
+/* initial state of the white section: fade/slide in after intro moves */
 .white-section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    /* this delay controls when the white section appears after intro slides out */
     transition-delay: 0.8s;
 }
 .boxes-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr) auto;
+    grid-template-rows: repeat(2, 1fr) auto; /* reserve a final row for the button */
     gap: 20px;
     width: 90%;
     max-width: 800px;
     height: 80%;
     margin-top: 60px;
 }
+
+/* ensure the leave button spans all profile and centered */
 .boxes-container .leave-btn {
     grid-column: 1 / -1;
     justify-self: center;
@@ -219,6 +235,8 @@ html, body {
 .box:hover img {
     transform: scale(1.05);
 }
+
+/* Team Detail Sections */
 .team-detail-section {
     background-size: cover;
     background-position: center;
@@ -234,22 +252,22 @@ html, body {
     transition: transform 0.8s ease;
     z-index: 100;
 }
+
+/* Team Detail bg*/
 .j-bg {
-    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
-                url('img/j3.png');
+    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('img/j3.png');
 }
 .k-bg {
-    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
-                url('img/k3.png');
+    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('img/k3.png');
 }
 .v-bg {
-    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
-                url('img/v.png');
+    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('img/v.png');
 }
 .e-bg {
-    background: linear-gradient(rgba(131, 131, 131, 0.7), rgba(131, 131, 131, 0.7)), 
-                url('img/s.png');
+    background: linear-gradient(rgba(131, 131, 131, 0.7), rgba(131, 131, 131, 0.7)),  url('img/s.png');
 }
+
+/* Detail container */
 .detail-container {
     display: flex;
     flex-direction: column;
@@ -304,6 +322,8 @@ html, body {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(26, 42, 108, 0.6);
 }
+
+/* Snow why? its a brand (i have created/copy 27 different ways to make snowflakes/snow) */
 .snow-container {
     position: absolute;
     top: 0;
@@ -322,7 +342,7 @@ html, body {
 }
 @keyframes snowfall {
     0% {
-        transform: translateY(-10px) translateX(0);
+        transform: translateY(-10px) translateX(0); /* translateX its the same as Y but x */
         opacity: 0;
     }
     10% {
@@ -336,6 +356,7 @@ html, body {
         opacity: 0;
     }
 }
+
 /* Animations */
 @keyframes pop-out {
     0% { transform: scale(0) rotate(-180deg); opacity: 0; }
@@ -360,6 +381,7 @@ html, body {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
 }
+
 /* Scroll transition */
 .scrolled-down .intro-section {
     transform: translateY(-100vh);
@@ -367,26 +389,33 @@ html, body {
 .scrolled-down .white-section {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0s; /* ensure no delay on reveal */
+    transition-delay: 0s; 
 }
 .scrolled-down .section-title h2,
 .scrolled-down .boxes-container .leave-btn {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* team detail active */
 .team-detail-active .white-section {
     transform: translateY(-100vh);
 }
 .team-detail-active .team-detail-section.active {
     transform: translateY(0);
 }
+
+/* Allow normal scrolling */
 .scrolled-down {
     overflow: auto;
 }
+
+/* Disable scrolling on detail */
 .team-detail-active {
     overflow: hidden;
 }
-/* Disable transitions/animations */
+
+/* Disable transitions/animations temporarily */
 .no-transition .intro-section,
 .no-transition .white-section,
 .no-transition .team-detail-section,
@@ -398,9 +427,4 @@ html, body {
 .no-transition .detail-container {
     transition: none !important;
     animation: none !important;
-
 }
-
-
-
-
