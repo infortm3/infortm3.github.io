@@ -116,6 +116,7 @@ html, body {
     z-index: 10;
     font-family: 'Bebas Neue', sans-serif;
 }
+
 .enter-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(253, 187, 45, 0.6);
@@ -399,5 +400,6 @@ html, body {
     animation: none !important;
 
 }
+
 
 
